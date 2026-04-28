@@ -1,15 +1,21 @@
-import { useState } from 'react'
+import { useState,useContext } from 'react'
 import { Routes,Route } from 'react-router-dom' 
 import './App.css'
 import Home from './Pages/Home'
 import Auth from './Pages/Auth';
 import Checkout from './Pages/Checkout';
 import Navbar from './components/Navbar';
+import AuthProvider from './context/AuthContext';
+
+
 function App() {
 
 
+
   return ( <div className='app'>
-  
+    <AuthProvider>
+
+   
  <Navbar/>
 <Routes>
  
@@ -22,7 +28,7 @@ function App() {
 
      </Routes>
 
-
+ </AuthProvider>
   </div>
  
   )
