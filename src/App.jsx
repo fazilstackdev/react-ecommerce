@@ -3,10 +3,11 @@ import { Routes,Route } from 'react-router-dom'
 import './App.css'
 import Home from './Pages/Home'
 import Auth from './Pages/Auth';
-import Checkout from './Pages/Checkout';
+import  Checkout from './Pages/Checkout';
 import Navbar from './components/Navbar';
 import AuthProvider from './context/AuthContext';
 import ProductDetail from './Pages/ProductDetail';
+import CartProvider from './context/CartContext';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
 
   return ( <div className='app'>
     <AuthProvider>
+      <CartProvider>
 
    
  <Navbar/>
@@ -22,14 +24,15 @@ function App() {
  
 <Route  path="/" element={<Home/>}/>
 <Route  path="/auth"   element={<Auth/>}/>
-<Route  path="/checkout"  element={<Checkout/>} />
+<Route  path="/checkout"  element={< Checkout/>} />
+
 <Route path="/products/:id" element={<ProductDetail />} />  {/* ← املای ProductDetail */}
 
     
 
 
      </Routes>
-
+</CartProvider>
  </AuthProvider>
   </div>
  

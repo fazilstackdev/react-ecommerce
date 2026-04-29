@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { getproductById } from '../data/products'; 
-
+import { useCart } from "../context/CartContext"
 export default function ProductDetail(){
     const {id}=useParams();
+    const {addToCart,cartItems}=useCart();
    
     const [product,setProduct]=useState(null);
     const navigate=useNavigate();
@@ -24,6 +25,10 @@ export default function ProductDetail(){
     
     return <p>Loading...</p>;
   }
+  
+const productInCart=cartItems.find((item)=>item.id===product.id);
+const productQuantityLabel=productInCart 
+? `(${productInCart.quantity})`:"";
 
    return (
     <div className="page">
@@ -38,7 +43,7 @@ export default function ProductDetail(){
                     <p className="product-detail-nam">{product.name}</p>
                     <p className="product-detail.price">{product.price}</p>
                     <p className="product-detail-description">{product.description}</p>
-                    <button className="btn btn-primary">Add to card</button>
+                    <button className="btn btn-primary" onClick={()=>addToCart(product.id)}>Add to card {productQuantityLabel}</button>
                 </div>
             </div>
         </div>
