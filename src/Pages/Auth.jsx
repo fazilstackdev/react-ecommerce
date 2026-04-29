@@ -1,22 +1,17 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { AuthContext } from "../context/AuthContext";
+import {  useAuth } from "../context/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
 export default function Auth() {
 
     const [mode, setMode] = useState("signup");
     const [error,seterror]=useState(null);
-    const { signUp, user, logout ,login} = useContext(AuthContext);
+    const { signUp, user, logout ,login} = useAuth();
     const navigate=useNavigate()
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     async function onSubmit(data) {
-    //     const result = await signUp(data.email, data.password);
-    //     if (result && result.success) {
-    //         alert("ثبت نام موفق! وارد شدید.");
-    //     } else if (result && result.error) {
-    //         alert(result.error);
-    //     }
+   
     seterror(null);
      let result;
      if (mode=="signup"){
@@ -101,3 +96,5 @@ export default function Auth() {
         </div>
     );
 }
+
+

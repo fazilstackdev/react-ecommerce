@@ -6,6 +6,7 @@ import Auth from './Pages/Auth';
 import Checkout from './Pages/Checkout';
 import Navbar from './components/Navbar';
 import AuthProvider from './context/AuthContext';
+import ProductDetail from './Pages/ProductDetail';
 
 
 function App() {
@@ -19,9 +20,10 @@ function App() {
  <Navbar/>
 <Routes>
  
-<Route  path="/" element={<Home/> }/>
+<Route  path="/" element={<Home/>}/>
 <Route  path="/auth"   element={<Auth/>}/>
 <Route  path="/checkout"  element={<Checkout/>} />
+<Route path="/products/:id" element={<ProductDetail />} />  {/* ← املای ProductDetail */}
 
     
 

@@ -179,6 +179,9 @@ export default function getproduct(){
     return products
 }
 
+export  function getproductById(id){
+  return products.find((p)=>p.id==Number(id));
+}
 
 
 
